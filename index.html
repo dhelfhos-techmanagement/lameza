@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>La Meza Steakhouse | Menú</title>
+<style>
+  :root{
+    --bg:#0c0a08;
+    --bg2:#151210;
+    --gold:#c9a961;
+    --gold-light:#e8d5a3;
+    --ember:#ff5b1f;
+    --text:#f1ece2;
+    --muted:#b9ada0;
+    --card:#1a1512;
+    --border:#3a2f22;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html,body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Georgia", "Times New Roman", serif;
+    overflow-x:hidden;
+    width:100%;
+  }
+  body{
+    background:
+      radial-gradient(ellipse at top, rgba(255,91,31,0.08), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 3px),
+      var(--bg);
+    min-height:100vh;
+    padding-bottom:90px;
+  }
+  img{max-width:100%;display:block;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:38px 20px 30px;
+    text-align:center;
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.75)),
+      var(--bg2);
+    border-bottom:2px solid var(--border);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,91,31,0.25), transparent 35%),
+      radial-gradient(circle at 85% 80%, rgba(255,91,31,0.18), transparent 40%);
+    pointer-events:none;
+  }
+  .hero-content{position:relative;z-index:1;}
+  .hero-eyebrow{
+    letter-spacing:4px;
+    font-size:11px;
+    color:var(--ember);
+    text-transform:uppercase;
+    font-family:Arial,sans-serif;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-family:"Georgia", serif;
+    font-size:clamp(38px,12vw,54px);
+    letter-spacing:2px;
+    background:linear-gradient(180deg,#fff,#c9a961 70%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    line-height:1;
+    text-transform:uppercase;
+    text-shadow:0 2px 20px rgba(201,169,97,0.25);
+  }
+  .hero .sub{
+    margin-top:6px;
+    font-size:clamp(15px,4.5vw,20px);
+    letter-spacing:6px;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    font-family:Arial,sans-serif;
+    font-weight:300;
+  }
+  .hero .tagline{
+    margin-top:16px;
+    font-size:13px;
+    color:var(--muted);
+    font-style:italic;
+    letter-spacing:1px;
+  }
+  .flame{display:inline-block;margin:0 4px;}
+
+  /* ---------- SECTION NAV HINT ---------- */
+  .hint{
+    text-align:center;
+    font-size:11.5px;
+    color:var(--muted);
+    letter-spacing:1px;
+    padding:14px 20px 4px;
+    font-family:Arial,sans-serif;
+    text-transform:uppercase;
+  }
+
+  /* ---------- BANNERS ---------- */
+  .menu-list{
+    padding:12px 14px 8px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .category{
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    background:var(--card);
+    box-shadow:0 6px 18px rgba(0,0,0,0.4);
+  }
+  .banner{
+    position:relative;
+    width:100%;
+    padding:0;
+    border:none;
+    background:none;
+    display:block;
+    text-align:left;
+    cursor:pointer;
+  }
+  .banner-img-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/8;
+    overflow:hidden;
+  }
+  .banner-img-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scale(1.02);
+    filter:saturate(1.05) contrast(1.05);
+  }
+  .banner-img-wrap::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.85) 100%);
+  }
+  .banner-caption{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    z-index:2;
+    padding:14px 16px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+  }
+  .banner-title{
+    font-family:"Georgia",serif;
+    font-size:22px;
+    letter-spacing:1px;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    text-shadow:0 2px 8px rgba(0,0,0,0.8);
+  }
+  .banner-title small{
+    display:block;
+    font-family:Arial,sans-serif;
+    font-size:10.5px;
+    letter-spacing:2px;
+    color:var(--muted);
+    text-transform:uppercase;
+    margin-top:3px;
+  }
+  .chevron{display:none;}
+
+  .panel{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .45s ease;
+    background:var(--bg2);
+  }
+  .panel-inner{
+    padding:18px 16px 20px;
+  }
+  .item-group{margin-bottom:14px;}
+  .item-group:last-child{margin-bottom:0;}
+  .group-label{
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--ember);
+    font-weight:700;
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .group-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, var(--border), transparent);
+  }
+  .item-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+    padding:8px 0;
+    border-bottom:1px dashed var(--border);
+  }
+  .item-row:last-child{border-bottom:none;}
+  .item-name{
+    font-size:15px;
+    color:var(--text);
+    flex:1;
+  }
+  .item-desc{
+    display:block;
+    font-family:Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--muted);
+    margin-top:2px;
+    line-height:1.4;
+  }
+  .item-prices{
+    display:flex;
+    gap:10px;
+    flex-shrink:0;
+    font-family:Arial,sans-serif;
+  }
+  .price{
+    font-size:14px;
+    font-weight:700;
+    color:var(--gold-light);
+    white-space:nowrap;
+  }
+  .price-tag{
+    font-size:8.5px;
+    color:var(--muted);
+    display:block;
+    text-align:center;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+  }
+  .price-col{display:flex;flex-direction:column;align-items:center;}
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    text-align:center;
+    padding:34px 20px 20px;
+    border-top:2px solid var(--border);
+    margin-top:20px;
+    background:var(--bg2);
+  }
+  .footer-tag{
+    font-family:"Georgia",serif;
+    font-size:26px;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    line-height:1.2;
+    margin-bottom:14px;
+  }
+  .footer-tag .ember-word{color:var(--ember);}
+  .logo-ring{
+    width:110px;height:110px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 16px;
+    background:radial-gradient(circle, rgba(255,91,31,0.12), transparent 70%);
+  }
+  .logo-ring .flame-icon{font-size:34px;}
+  .footer-brand{
+    font-family:"Georgia",serif;
+    font-size:19px;
+    letter-spacing:1px;
+    color:var(--gold-light);
+  }
+  .footer-brand small{
+    display:block;
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    letter-spacing:3px;
+    color:var(--muted);
+  }
+  .footer-contact{
+    margin-top:18px;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    color:var(--text);
+    letter-spacing:0.5px;
+  }
+  .footer-handle{
+    margin-top:6px;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:0.5px;
+  }
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin-top:14px;
+  }
+  .socials a{
+    width:38px;height:38px;
+    border:1px solid var(--border);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold-light);
+    text-decoration:none;
+  }
+
+  /* ---------- WHATSAPP FLOATING BUTTON ---------- */
+  .wa-fab{
+    position:fixed;
+    right:16px;
+    bottom:16px;
+    z-index:50;
+    width:58px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#25D366;
+    color:#04250f;
+    text-decoration:none;
+    border-radius:50%;
+    box-shadow:0 8px 24px rgba(37,211,102,0.45), 0 2px 6px rgba(0,0,0,0.3);
+    animation:pulse 2.4s infinite;
+  }
+  .wa-fab svg{width:28px;height:28px;flex-shrink:0;}
+  @keyframes pulse{
+    0%{box-shadow:0 8px 24px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0.5);}
+    70%{box-shadow:0 8px 24px rgba(37,211,102,0.45),0 0 0 14px rgba(37,211,102,0);}
+    100%{box-shadow:0 8px 24px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0);}
+  }
+
+  @media (min-width:520px){
+    .menu-list{max-width:480px;margin:0 auto;}
+    .hero, .footer{max-width:480px;margin:0 auto;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Sabor al carbón</div>
+      <h1>La Meza</h1>
+      <div class="sub">Steakhouse</div>
+    </div>
+  </section>
+
+  <div class="hint">Desliza y explora nuestras categorías</div>
+
+  <!-- MENU BANNERS -->
+  <main class="menu-list" id="menu-list">
+
+    <!-- PERROS -->
+    <div class="category">
+      <button class="banner" data-target="p-perros">
+        <div class="banner-img-wrap">
+          <img src="images/perro.webp" alt="Perros a la parrilla">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Perros<small>A la parrilla</small></div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-perros">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="group-label">Sencillo / Con papas</div>
+            <div class="item-row"><span class="item-name">Perro sencillo</span><div class="item-prices"><div class="price-col"><span class="price">$6.000</span></div><div class="price-col"><span class="price">$8.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro puerto</span><div class="item-prices"><div class="price-col"><span class="price">$10.000</span></div><div class="price-col"><span class="price">$12.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Miti suizo</span><div class="item-prices"><div class="price-col"><span class="price">$11.000</span></div><div class="price-col"><span class="price">$13.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro suizo</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$17.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro pollo</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$17.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro costeño</span><div class="item-prices"><div class="price-col"><span class="price">$14.000</span></div><div class="price-col"><span class="price">$16.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro champions</span><div class="item-prices"><div class="price-col"><span class="price">$20.000</span></div><div class="price-col"><span class="price">$22.000</span></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASADOS -->
+    <div class="category">
+      <button class="banner" data-target="p-asados">
+        <div class="banner-img-wrap">
+          <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=1000&auto=format&fit=crop" alt="Asados">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Asados</div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-asados">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Pechuga</span><div class="item-prices"><span class="price">$25.000</span></div></div>
+            <div class="item-row"><span class="item-name">Carne</span><div class="item-prices"><span class="price">$25.000</span></div></div>
+            <div class="item-row"><span class="item-name">Churrasco</span><div class="item-prices"><span class="price">$33.000</span></div></div>
+            <div class="item-row"><span class="item-name">Punta gorda</span><div class="item-prices"><span class="price">$37.000</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HAMBURGUESAS -->
+    <div class="category">
+      <button class="banner" data-target="p-hamburguesas">
+        <div class="banner-img-wrap">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop" alt="Hamburguesas">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Hamburguesas<small>Con papas</small></div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-hamburguesas">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Clásica</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$20.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Pollo</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$20.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Bacon</span><div class="item-prices"><div class="price-col"><span class="price">$17.000</span></div><div class="price-col"><span class="price">$22.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Steak</span><div class="item-prices"><div class="price-col"><span class="price">$19.000</span></div><div class="price-col"><span class="price">$24.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Doble</span><div class="item-prices"><div class="price-col"><span class="price">$24.000</span></div><div class="price-col"><span class="price">$29.000</span></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALCHIPAPAS -->
+    <div class="category">
+      <button class="banner" data-target="p-salchipapas">
+        <div class="banner-img-wrap">
+          <img src="images/salchipapa.webp" alt="Salchipapas">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Salchipapas</div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-salchipapas">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Clásica</span><div class="item-prices"><span class="price">$15.000</span></div></div>
+            <div class="item-row"><span class="item-name">Suiza</span><div class="item-prices"><span class="price">$20.000</span></div></div>
+            <div class="item-row"><span class="item-name">Pollo</span><div class="item-prices"><div class="price-col"><span class="price">$20.000</span></div><div class="price-col"><span class="price">$30.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Steak</span><div class="item-prices"><div class="price-col"><span class="price">$22.000</span></div><div class="price-col"><span class="price">$32.000</span></div></div></div>
+          </div>
+          <div class="item-group">
+            <div class="item-row">
+              <span class="item-name">Mixta<span class="item-desc">Papas francesa, salchicha, pollo, carne, queso costeño, papa ripio, salsa</span></span>
+              <div class="item-prices"><div class="price-col"><span class="price">$24.000</span></div><div class="price-col"><span class="price">$34.000</span></div></div>
+            </div>
+            <div class="item-row">
+              <span class="item-name">Salvajada<span class="item-desc">Papas francesa, salchicha, pollo, suiza, chorizo, butifarra, queso costeño, papa ripio, mozzarella, maíz, salsa</span></span>
+              <div class="item-prices"><span class="price">$32.000</span></div>
+            </div>
+          </div>
+          <div class="item-group">
+            <div class="item-row">
+              <span class="item-name">Steak House<span class="item-desc">Papá francesa, salchicha, pollo, carne, suiza, queso costeño, papa ripio, queso mozzarella, tocineta, salsa</span></span>
+              <div class="item-prices"><div class="price-col"><span class="price">$27.000</span></div><div class="price-col"><span class="price">$37.000</span></div><div class="price-col"><span class="price">$47.000</span></div></div>
+            </div>
+            <div class="item-row">
+              <span class="item-name">Súper Steak<span class="item-desc">Papá francesa, salchicha, pollo, carne, suiza, queso costeño, papa ripio, mozarella, tocineta, maíz, salsa</span></span>
+              <div class="item-prices"><span class="price">$70.000</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESGRANADOS -->
+    <div class="category">
+      <button class="banner" data-target="p-desgranados">
+        <div class="banner-img-wrap">
+          <img src="images/desgranado.png" alt="Desgranados">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Desgranados</div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-desgranados">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Suizo<span class="item-desc">Bollo, suiza, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$17.000</span></div></div>
+            <div class="item-row"><span class="item-name">Pollo<span class="item-desc">Bollo, pollo, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$17.000</span></div></div>
+            <div class="item-row"><span class="item-name">Steak<span class="item-desc">Bollo, suiza, pollo, queso costeño, papa ripio, maíz, salsa</span></span><div class="item-prices"><span class="price">$22.000</span></div></div>
+            <div class="item-row"><span class="item-name">Mixto<span class="item-desc">Bollo, carne, pollo, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$25.000</span></div></div>
+            <div class="item-row"><span class="item-name">Salvaje pa' 3<span class="item-desc">Bollo, pollo, suiza, chorizo, butifarra, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$30.000</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADICIONALES / BEBIDAS -->
+    <div class="category">
+      <button class="banner" data-target="p-adicionales">
+        <div class="banner-img-wrap">
+          <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=1000&auto=format&fit=crop" alt="Adicionales y bebidas">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Adicionales<small>Y bebidas</small></div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-adicionales">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="group-label">Adicionales</div>
+            <div class="item-row"><span class="item-name">Papas francesa</span><div class="item-prices"><span class="price">$5.000</span></div></div>
+            <div class="item-row"><span class="item-name">Bollo</span><div class="item-prices"><span class="price">$3.000</span></div></div>
+            <div class="item-row"><span class="item-name">Mozarella</span><div class="item-prices"><span class="price">$4.000</span></div></div>
+            <div class="item-row"><span class="item-name">Tocineta</span><div class="item-prices"><span class="price">$4.000</span></div></div>
+          </div>
+          <div class="item-group">
+            <div class="group-label">Bebidas</div>
+            <div class="item-row"><span class="item-name">Coca-Cola 1.5</span><div class="item-prices"><span class="price">$8.000</span></div></div>
+            <div class="item-row"><span class="item-name">Postobón 1.5</span><div class="item-prices"><span class="price">$8.000</span></div></div>
+            <div class="item-row"><span class="item-name">Coca-Cola personal</span><div class="item-prices"><span class="price">$4.000</span></div></div>
+            <div class="item-row"><span class="item-name">Postobón personal</span><div class="item-prices"><span class="price">$4.000</span></div></div>
+            <div class="item-row"><span class="item-name">Agua</span><div class="item-prices"><span class="price">$3.000</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-tag">Sabor al carbón<br>que <span class="ember-word">conquistan</span> 🔥</div>
+    <div class="logo-ring">
+      <div class="flame-icon">🔥</div>
+    </div>
+    <div class="footer-brand">La Meza<small>Steakhouse</small></div>
+    <div class="footer-contact">📱 +57 324 613 3329</div>
+    <div class="footer-handle">@lamezasteakhouse</div>
+    <div class="socials">
+      <a href="https://wa.me/573246133329" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.87 11.87L4 20l4.24-1.11a7.9 7.9 0 0 0 3.8.97h0a7.94 7.94 0 0 0 5.56-13.54zm-5.55 12.2a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 5.6 3.09zm3.6-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.77-.11.13-.23.14-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.08-.4.09-.1.2-.24.29-.36.1-.12.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.34.05-.52.24-.18.2-.68.66-.68 1.62s.7 1.88.8 2.01c.1.13 1.38 2.1 3.34 2.95.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+      </a>
+      <a href="https://instagram.com/lamezasteakhouse" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
+      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.5-3.5h-3V7.8c0-1 .3-1.7 1.7-1.7H16.5V3.1C16 3 15 3 14 3c-2.7 0-4.5 1.6-4.5 4.6v2.4H7v3.5h2.5V21h4z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a class="wa-fab" href="https://wa.me/573246133329?text=Hola%20La%20Meza%20Steakhouse%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.87 11.87L4 20l4.24-1.11a7.9 7.9 0 0 0 3.8.97h0a7.94 7.94 0 0 0 5.56-13.54zm-5.55 12.2a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 5.6 3.09zm3.6-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.77-.11.13-.23.14-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.08-.4.09-.1.2-.24.29-.36.1-.12.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.34.05-.52.24-.18.2-.68.66-.68 1.62s.7 1.88.8 2.01c.1.13 1.38 2.1 3.34 2.95.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+  </a>
+
+<script>
+  document.querySelectorAll('.banner').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.closest('.category');
+      const panel = document.getElementById(btn.dataset.target);
+      const isOpen = category.classList.contains('open');
+
+      document.querySelectorAll('.category').forEach(c => {
+        c.classList.remove('open');
+        c.querySelector('.panel').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        category.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        setTimeout(() => {
+          category.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 120);
+      }
+    });
+  });
+</script>
+</body>
+</html>
