@@ -37,62 +37,17 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    padding:38px 20px 30px;
-    text-align:center;
+    width:100%;
     overflow:hidden;
-    background:
-      linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.75)),
-      var(--bg2);
+    background:var(--bg2);
     border-bottom:2px solid var(--border);
   }
-  .hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(255,91,31,0.25), transparent 35%),
-      radial-gradient(circle at 85% 80%, rgba(255,91,31,0.18), transparent 40%);
-    pointer-events:none;
+  .hero-banner-img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:cover;
   }
-  .hero-content{position:relative;z-index:1;}
-  .hero-eyebrow{
-    letter-spacing:4px;
-    font-size:11px;
-    color:var(--ember);
-    text-transform:uppercase;
-    font-family:Arial,sans-serif;
-    font-weight:700;
-    margin-bottom:10px;
-  }
-  .hero h1{
-    font-family:"Georgia", serif;
-    font-size:clamp(38px,12vw,54px);
-    letter-spacing:2px;
-    background:linear-gradient(180deg,#fff,#c9a961 70%);
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-    line-height:1;
-    text-transform:uppercase;
-    text-shadow:0 2px 20px rgba(201,169,97,0.25);
-  }
-  .hero .sub{
-    margin-top:6px;
-    font-size:clamp(15px,4.5vw,20px);
-    letter-spacing:6px;
-    color:var(--gold-light);
-    text-transform:uppercase;
-    font-family:Arial,sans-serif;
-    font-weight:300;
-  }
-  .hero .tagline{
-    margin-top:16px;
-    font-size:13px;
-    color:var(--muted);
-    font-style:italic;
-    letter-spacing:1px;
-  }
-  .flame{display:inline-block;margin:0 4px;}
 
   /* ---------- SECTION NAV HINT ---------- */
   .hint{
@@ -252,50 +207,42 @@
   /* ---------- FOOTER ---------- */
   .footer{
     text-align:center;
-    padding:34px 20px 20px;
+    padding:28px 0 20px;
     border-top:2px solid var(--border);
     margin-top:20px;
     background:var(--bg2);
+    overflow:hidden;
   }
   .footer-tag{
     font-family:"Georgia",serif;
-    font-size:26px;
+    font-size:24px;
     color:var(--gold-light);
     text-transform:uppercase;
     line-height:1.2;
-    margin-bottom:14px;
+    margin-bottom:18px;
+    padding:0 20px;
   }
   .footer-tag .ember-word{color:var(--ember);}
-  .logo-ring{
-    width:110px;height:110px;
-    border-radius:50%;
-    border:2px solid var(--gold);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 16px;
-    background:radial-gradient(circle, rgba(255,91,31,0.12), transparent 70%);
+  .footer-logo-full{
+    width:100%;
+    overflow:hidden;
+    margin-bottom:18px;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
   }
-  .logo-ring .flame-icon{font-size:34px;}
-  .footer-brand{
-    font-family:"Georgia",serif;
-    font-size:19px;
-    letter-spacing:1px;
-    color:var(--gold-light);
-  }
-  .footer-brand small{
+  .footer-banner-img{
+    width:100%;
+    height:auto;
     display:block;
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:3px;
-    color:var(--muted);
+    object-fit:cover;
   }
   .footer-contact{
-    margin-top:18px;
+    margin-top:12px;
     font-family:Arial,sans-serif;
     font-size:14px;
     color:var(--text);
     letter-spacing:0.5px;
+    padding:0 20px;
   }
   .footer-handle{
     margin-top:6px;
@@ -303,12 +250,14 @@
     font-size:13px;
     color:var(--muted);
     letter-spacing:0.5px;
+    padding:0 20px;
   }
   .socials{
     display:flex;
     justify-content:center;
     gap:16px;
     margin-top:14px;
+    padding:0 20px;
   }
   .socials a{
     width:38px;height:38px;
@@ -353,20 +302,110 @@
 <body>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-eyebrow">Sabor al carbón</div>
-      <h1>La Meza</h1>
-      <div class="sub">Steakhouse</div>
-    </div>
-  </section>
+  <header class="hero">
+    <img src="images/logo.jpg" alt="La Meza Steakhouse" class="hero-banner-img">
+  </header>
 
   <div class="hint">Desliza y explora nuestras categorías</div>
 
   <!-- MENU BANNERS -->
   <main class="menu-list" id="menu-list">
 
-    <!-- PERROS -->
+    <!-- 1. PARRILLA -->
+    <div class="category">
+      <button class="banner" data-target="p-parrilla">
+        <div class="banner-img-wrap">
+          <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=1000&auto=format&fit=crop" alt="Parrilla">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Parrilla</div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-parrilla">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Pechuga</span><div class="item-prices"><span class="price">$25.000</span></div></div>
+            <div class="item-row"><span class="item-name">Carne</span><div class="item-prices"><span class="price">$25.000</span></div></div>
+            <div class="item-row"><span class="item-name">Churrasco</span><div class="item-prices"><span class="price">$33.000</span></div></div>
+            <div class="item-row"><span class="item-name">Punta gorda</span><div class="item-prices"><span class="price">$37.000</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. SÁNDWICH -->
+    <div class="category">
+      <button class="banner" data-target="p-sandwich">
+        <div class="banner-img-wrap">
+          <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=1000&auto=format&fit=crop" alt="Sándwich">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Sándwich</div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-sandwich">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Sándwich de pollo</span><div class="item-prices"><span class="price">$20.000</span></div></div>
+            <div class="item-row"><span class="item-name">Sándwich de carne</span><div class="item-prices"><span class="price">$22.000</span></div></div>
+            <div class="item-row"><span class="item-name">Sándwich bacon</span><div class="item-prices"><span class="price">$20.000</span></div></div>
+            <div class="item-row"><span class="item-name">Sándwich steak</span><div class="item-prices"><span class="price">$27.000</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. DESGRANADOS -->
+    <div class="category">
+      <button class="banner" data-target="p-desgranados">
+        <div class="banner-img-wrap">
+          <img src="images/desgranado.png" alt="Desgranados">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Desgranados</div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-desgranados">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Suizo<span class="item-desc">Bollo, suiza, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$19.000</span></div></div>
+            <div class="item-row"><span class="item-name">Pollo<span class="item-desc">Bollo, pollo, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$19.000</span></div></div>
+            <div class="item-row"><span class="item-name">Steak<span class="item-desc">Bollo, suiza, pollo, queso costeño, papa ripio, maíz, salsa</span></span><div class="item-prices"><span class="price">$24.000</span></div></div>
+            <div class="item-row"><span class="item-name">Mixto<span class="item-desc">Bollo, carne, pollo, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$27.000</span></div></div>
+            <div class="item-row"><span class="item-name">Salvaje pa' 3<span class="item-desc">Bollo, pollo, suiza, chorizo, butifarra, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$32.000</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. HAMBURGUESAS -->
+    <div class="category">
+      <button class="banner" data-target="p-hamburguesas">
+        <div class="banner-img-wrap">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop" alt="Hamburguesas">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Hamburguesas<small>Con papas</small></div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-hamburguesas">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Clásica</span><div class="item-prices"><div class="price-col"><span class="price">$17.000</span></div><div class="price-col"><span class="price">$22.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Pollo</span><div class="item-prices"><div class="price-col"><span class="price">$17.000</span></div><div class="price-col"><span class="price">$22.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Bacon</span><div class="item-prices"><div class="price-col"><span class="price">$19.000</span></div><div class="price-col"><span class="price">$24.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Steak</span><div class="item-prices"><div class="price-col"><span class="price">$21.000</span></div><div class="price-col"><span class="price">$26.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Doble</span><div class="item-prices"><div class="price-col"><span class="price">$26.000</span></div><div class="price-col"><span class="price">$31.000</span></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. PERROS -->
     <div class="category">
       <button class="banner" data-target="p-perros">
         <div class="banner-img-wrap">
@@ -382,65 +421,18 @@
           <div class="item-group">
             <div class="group-label">Sencillo / Con papas</div>
             <div class="item-row"><span class="item-name">Perro sencillo</span><div class="item-prices"><div class="price-col"><span class="price">$6.000</span></div><div class="price-col"><span class="price">$8.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Perro puerto</span><div class="item-prices"><div class="price-col"><span class="price">$10.000</span></div><div class="price-col"><span class="price">$12.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Miti suizo</span><div class="item-prices"><div class="price-col"><span class="price">$11.000</span></div><div class="price-col"><span class="price">$13.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Perro suizo</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$17.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Perro pollo</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$17.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Perro costeño</span><div class="item-prices"><div class="price-col"><span class="price">$14.000</span></div><div class="price-col"><span class="price">$16.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Perro champions</span><div class="item-prices"><div class="price-col"><span class="price">$20.000</span></div><div class="price-col"><span class="price">$22.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro puerto</span><div class="item-prices"><div class="price-col"><span class="price">$11.000</span></div><div class="price-col"><span class="price">$13.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Miti suizo</span><div class="item-prices"><div class="price-col"><span class="price">$12.000</span></div><div class="price-col"><span class="price">$14.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro suizo</span><div class="item-prices"><div class="price-col"><span class="price">$16.000</span></div><div class="price-col"><span class="price">$18.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro pollo</span><div class="item-prices"><div class="price-col"><span class="price">$16.000</span></div><div class="price-col"><span class="price">$18.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro costeño</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$17.000</span></div></div></div>
+            <div class="item-row"><span class="item-name">Perro champions</span><div class="item-prices"><div class="price-col"><span class="price">$21.000</span></div><div class="price-col"><span class="price">$23.000</span></div></div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ASADOS -->
-    <div class="category">
-      <button class="banner" data-target="p-asados">
-        <div class="banner-img-wrap">
-          <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=1000&auto=format&fit=crop" alt="Asados">
-        </div>
-        <div class="banner-caption">
-          <div class="banner-title">Asados</div>
-          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-      </button>
-      <div class="panel" id="p-asados">
-        <div class="panel-inner">
-          <div class="item-group">
-            <div class="item-row"><span class="item-name">Pechuga</span><div class="item-prices"><span class="price">$25.000</span></div></div>
-            <div class="item-row"><span class="item-name">Carne</span><div class="item-prices"><span class="price">$25.000</span></div></div>
-            <div class="item-row"><span class="item-name">Churrasco</span><div class="item-prices"><span class="price">$33.000</span></div></div>
-            <div class="item-row"><span class="item-name">Punta gorda</span><div class="item-prices"><span class="price">$37.000</span></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HAMBURGUESAS -->
-    <div class="category">
-      <button class="banner" data-target="p-hamburguesas">
-        <div class="banner-img-wrap">
-          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop" alt="Hamburguesas">
-        </div>
-        <div class="banner-caption">
-          <div class="banner-title">Hamburguesas<small>Con papas</small></div>
-          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-      </button>
-      <div class="panel" id="p-hamburguesas">
-        <div class="panel-inner">
-          <div class="item-group">
-            <div class="item-row"><span class="item-name">Clásica</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$20.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Pollo</span><div class="item-prices"><div class="price-col"><span class="price">$15.000</span></div><div class="price-col"><span class="price">$20.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Bacon</span><div class="item-prices"><div class="price-col"><span class="price">$17.000</span></div><div class="price-col"><span class="price">$22.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Steak</span><div class="item-prices"><div class="price-col"><span class="price">$19.000</span></div><div class="price-col"><span class="price">$24.000</span></div></div></div>
-            <div class="item-row"><span class="item-name">Doble</span><div class="item-prices"><div class="price-col"><span class="price">$24.000</span></div><div class="price-col"><span class="price">$29.000</span></div></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SALCHIPAPAS -->
+    <!-- 6. SALCHIPAPAS -->
     <div class="category">
       <button class="banner" data-target="p-salchipapas">
         <div class="banner-img-wrap">
@@ -462,78 +454,123 @@
           <div class="item-group">
             <div class="item-row">
               <span class="item-name">Mixta<span class="item-desc">Papas francesa, salchicha, pollo, carne, queso costeño, papa ripio, salsa</span></span>
-              <div class="item-prices"><div class="price-col"><span class="price">$24.000</span></div><div class="price-col"><span class="price">$34.000</span></div></div>
+              <div class="item-prices"><div class="price-col"><span class="price">$26.000</span></div><div class="price-col"><span class="price">$36.000</span></div></div>
             </div>
             <div class="item-row">
               <span class="item-name">Salvajada<span class="item-desc">Papas francesa, salchicha, pollo, suiza, chorizo, butifarra, queso costeño, papa ripio, mozzarella, maíz, salsa</span></span>
-              <div class="item-prices"><span class="price">$32.000</span></div>
+              <div class="item-prices"><span class="price">$34.000</span></div>
             </div>
           </div>
           <div class="item-group">
             <div class="item-row">
               <span class="item-name">Steak House<span class="item-desc">Papá francesa, salchicha, pollo, carne, suiza, queso costeño, papa ripio, queso mozzarella, tocineta, salsa</span></span>
-              <div class="item-prices"><div class="price-col"><span class="price">$27.000</span></div><div class="price-col"><span class="price">$37.000</span></div><div class="price-col"><span class="price">$47.000</span></div></div>
+              <div class="item-prices"><div class="price-col"><span class="price">$27.000</span></div><div class="price-col"><span class="price">$39.000</span></div><div class="price-col"><span class="price">$49.000</span></div></div>
             </div>
             <div class="item-row">
               <span class="item-name">Súper Steak<span class="item-desc">Papá francesa, salchicha, pollo, carne, suiza, queso costeño, papa ripio, mozarella, tocineta, maíz, salsa</span></span>
-              <div class="item-prices"><span class="price">$70.000</span></div>
+              <div class="item-prices"><span class="price">$80.000</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- DESGRANADOS -->
+    <!-- 7. COMBOS -->
     <div class="category">
-      <button class="banner" data-target="p-desgranados">
+      <button class="banner" data-target="p-combos">
         <div class="banner-img-wrap">
-          <img src="images/desgranado.png" alt="Desgranados">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop" alt="Combos">
         </div>
         <div class="banner-caption">
-          <div class="banner-title">Desgranados</div>
+          <div class="banner-title">Combos</div>
           <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
       </button>
-      <div class="panel" id="p-desgranados">
+      <div class="panel" id="p-combos">
         <div class="panel-inner">
           <div class="item-group">
-            <div class="item-row"><span class="item-name">Suizo<span class="item-desc">Bollo, suiza, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$17.000</span></div></div>
-            <div class="item-row"><span class="item-name">Pollo<span class="item-desc">Bollo, pollo, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$17.000</span></div></div>
-            <div class="item-row"><span class="item-name">Steak<span class="item-desc">Bollo, suiza, pollo, queso costeño, papa ripio, maíz, salsa</span></span><div class="item-prices"><span class="price">$22.000</span></div></div>
-            <div class="item-row"><span class="item-name">Mixto<span class="item-desc">Bollo, carne, pollo, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$25.000</span></div></div>
-            <div class="item-row"><span class="item-name">Salvaje pa' 3<span class="item-desc">Bollo, pollo, suiza, chorizo, butifarra, queso costeño, papa ripio, maíz, salsas</span></span><div class="item-prices"><span class="price">$30.000</span></div></div>
+            <div class="item-row">
+              <span class="item-name">Combo Parrilla<span class="item-desc">Parrillada mixta + desgranado parrilla y bebida</span></span>
+              <div class="item-prices"><span class="price">$50.000</span></div>
+            </div>
+            <div class="item-row">
+              <span class="item-name">Combo Hot<span class="item-desc">Sándwich de pollo + perro suizo + papas y bebida</span></span>
+              <div class="item-prices"><span class="price">$35.000</span></div>
+            </div>
+            <div class="item-row">
+              <span class="item-name">Combo Burguer<span class="item-desc">Burguer pollo bacon + burguer bacon + papas y bebidas</span></span>
+              <div class="item-prices"><span class="price">$40.000</span></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ADICIONALES / BEBIDAS -->
+    <!-- 8. COCTELES -->
+    <div class="category">
+      <button class="banner" data-target="p-cocteles">
+        <div class="banner-img-wrap">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop" alt="Cocteles">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Cocteles</div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-cocteles">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Mojito</span><div class="item-prices"><span class="price">$20.000</span></div></div>
+            <div class="item-row"><span class="item-name">Cuba Libre</span><div class="item-prices"><span class="price">$20.000</span></div></div>
+            <div class="item-row"><span class="item-name">Margarita</span><div class="item-prices"><span class="price">$25.000</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. BEBIDAS -->
+    <div class="category">
+      <button class="banner" data-target="p-bebidas">
+        <div class="banner-img-wrap">
+          <img src="images/bebidas.jpg" alt="Bebidas">
+        </div>
+        <div class="banner-caption">
+          <div class="banner-title">Bebidas</div>
+          <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+      </button>
+      <div class="panel" id="p-bebidas">
+        <div class="panel-inner">
+          <div class="item-group">
+            <div class="item-row"><span class="item-name">Coca-Cola 1.5</span><div class="item-prices"><span class="price">$8.000</span></div></div>
+            <div class="item-row"><span class="item-name">Coca-Cola litro</span><div class="item-prices"><span class="price">$6.000</span></div></div>
+            <div class="item-row"><span class="item-name">Gaseosa personal</span><div class="item-prices"><span class="price">$4.000</span></div></div>
+            <div class="item-row"><span class="item-name">Limonada natural</span><div class="item-prices"><span class="price">$10.000</span></div></div>
+            <div class="item-row"><span class="item-name">Limonada cerezada</span><div class="item-prices"><span class="price">$12.000</span></div></div>
+            <div class="item-row"><span class="item-name">Agua</span><div class="item-prices"><span class="price">$3.000</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. ADICIONALES -->
     <div class="category">
       <button class="banner" data-target="p-adicionales">
         <div class="banner-img-wrap">
-          <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=1000&auto=format&fit=crop" alt="Adicionales y bebidas">
+          <img src="images/papas.jpg" alt="Adicionales" style="object-position: right center;">
         </div>
         <div class="banner-caption">
-          <div class="banner-title">Adicionales<small>Y bebidas</small></div>
+          <div class="banner-title">Adicionales</div>
           <div class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
       </button>
       <div class="panel" id="p-adicionales">
         <div class="panel-inner">
           <div class="item-group">
-            <div class="group-label">Adicionales</div>
             <div class="item-row"><span class="item-name">Papas francesa</span><div class="item-prices"><span class="price">$5.000</span></div></div>
             <div class="item-row"><span class="item-name">Bollo</span><div class="item-prices"><span class="price">$3.000</span></div></div>
             <div class="item-row"><span class="item-name">Mozarella</span><div class="item-prices"><span class="price">$4.000</span></div></div>
             <div class="item-row"><span class="item-name">Tocineta</span><div class="item-prices"><span class="price">$4.000</span></div></div>
-          </div>
-          <div class="item-group">
-            <div class="group-label">Bebidas</div>
-            <div class="item-row"><span class="item-name">Coca-Cola 1.5</span><div class="item-prices"><span class="price">$8.000</span></div></div>
-            <div class="item-row"><span class="item-name">Postobón 1.5</span><div class="item-prices"><span class="price">$8.000</span></div></div>
-            <div class="item-row"><span class="item-name">Coca-Cola personal</span><div class="item-prices"><span class="price">$4.000</span></div></div>
-            <div class="item-row"><span class="item-name">Postobón personal</span><div class="item-prices"><span class="price">$4.000</span></div></div>
-            <div class="item-row"><span class="item-name">Agua</span><div class="item-prices"><span class="price">$3.000</span></div></div>
           </div>
         </div>
       </div>
@@ -544,10 +581,9 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-tag">Sabor al carbón<br>que <span class="ember-word">conquistan</span> 🔥</div>
-    <div class="logo-ring">
-      <div class="flame-icon">🔥</div>
+    <div class="footer-logo-full">
+      <img src="images/logo.jpg" alt="La Meza Steakhouse" class="footer-banner-img">
     </div>
-    <div class="footer-brand">La Meza<small>Steakhouse</small></div>
     <div class="footer-contact">📱 +57 324 613 3329</div>
     <div class="footer-handle">@lamezasteakhouse</div>
     <div class="socials">
