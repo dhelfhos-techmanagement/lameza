@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>La Meza Steakhouse | Menú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0c0a08;
@@ -204,68 +207,112 @@
   }
   .price-col{display:flex;flex-direction:column;align-items:center;}
 
-  /* ---------- FOOTER ---------- */
+  /* ---------- FOOTER - EXACT MATCH ---------- */
   .footer{
-    text-align:center;
-    padding:28px 0 20px;
-    border-top:2px solid var(--border);
-    margin-top:20px;
-    background:var(--bg2);
-    overflow:hidden;
-  }
-  .footer-tag{
-    font-family:"Georgia",serif;
-    font-size:24px;
-    color:var(--gold-light);
-    text-transform:uppercase;
-    line-height:1.2;
-    margin-bottom:18px;
-    padding:0 20px;
-  }
-  .footer-tag .ember-word{color:var(--ember);}
-  .footer-logo-full{
     width:100%;
-    overflow:hidden;
-    margin-bottom:18px;
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
+    margin-top:20px;
+    padding-bottom:34px;
+    background:#080706;
+    text-align:center;
   }
-  .footer-banner-img{
+  .footer-card{
+    background:#060504;
+    background-image:
+      radial-gradient(ellipse at 50% 50%, rgba(201, 169, 97, 0.06) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
+    width:100%;
+    padding:0 0 22px;
+    overflow:hidden;
+  }
+  .footer-card-logo{
     width:100%;
     height:auto;
     display:block;
-    object-fit:cover;
+    filter:sepia(0.3) saturate(1.25) brightness(1.04) contrast(1.04);
   }
-  .footer-contact{
-    margin-top:12px;
-    font-family:Arial,sans-serif;
-    font-size:14px;
-    color:var(--text);
+  .flourish-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0 24px;
+    margin:10px auto 14px;
+    max-width:320px;
+  }
+  .flourish-bottom{
+    margin:14px auto 6px;
+  }
+  .gold-flourish{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .footer-slogan{
+    font-family:"Georgia", "Times New Roman", serif;
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:2px;
+    line-height:1.25;
+    color:#f1ece2;
+    text-transform:uppercase;
+    padding:0 16px;
+    text-shadow:0 2px 8px rgba(0,0,0,0.9);
+  }
+  .footer-slogan .conquista-word{
+    color:#ff5500;
+    font-weight:800;
+    text-shadow:0 0 10px rgba(255, 85, 0, 0.4);
+  }
+  .footer-slogan .fire-emoji{
+    display:inline-block;
+    vertical-align:baseline;
+  }
+
+  .footer-bottom{
+    padding:22px 20px 0;
+  }
+  .footer-phone{
+    font-family:Arial, sans-serif;
+    font-size:15px;
     letter-spacing:0.5px;
-    padding:0 20px;
+    margin-bottom:8px;
+    color:#ffffff;
+  }
+  .footer-phone a{
+    color:#1e60ff;
+    text-decoration:underline;
+    font-weight:500;
   }
   .footer-handle{
-    margin-top:6px;
-    font-family:Arial,sans-serif;
-    font-size:13px;
-    color:var(--muted);
+    font-family:Arial, sans-serif;
+    font-size:13.5px;
+    color:#a39a8e;
     letter-spacing:0.5px;
-    padding:0 20px;
+    margin-bottom:18px;
   }
+
   .socials{
     display:flex;
     justify-content:center;
     gap:16px;
-    margin-top:14px;
-    padding:0 20px;
+    margin-top:4px;
   }
   .socials a{
-    width:38px;height:38px;
-    border:1px solid var(--border);
+    width:42px;
+    height:42px;
     border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--gold-light);
+    background:#151311;
+    border:1px solid #332b22;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#ded6cb;
     text-decoration:none;
+    transition:all .2s ease;
+  }
+  .socials a:hover, .socials a:active{
+    border-color:#c9a961;
+    color:#ffffff;
+    background:#1e1a16;
   }
 
   /* ---------- WHATSAPP FLOATING BUTTON ---------- */
@@ -295,7 +342,9 @@
 
   @media (min-width:520px){
     .menu-list{max-width:480px;margin:0 auto;}
-    .hero, .footer{max-width:480px;margin:0 auto;}
+    .hero{max-width:480px;margin:0 auto;}
+    .footer-card{max-width:480px;margin:0 auto;}
+    .footer-bottom{max-width:480px;margin:0 auto;}
   }
 </style>
 </head>
@@ -580,22 +629,62 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-tag">Sabor al carbón<br>que <span class="ember-word">conquistan</span> 🔥</div>
-    <div class="footer-logo-full">
-      <img src="images/logo.jpg" alt="La Meza Steakhouse" class="footer-banner-img">
+    <div class="footer-card">
+      <img src="images/logo.jpg" alt="La Meza Steakhouse" class="footer-card-logo">
+      <div class="flourish-wrap">
+        <svg class="gold-flourish" viewBox="0 0 340 20" fill="#c9a961">
+          <path d="M10 9.5 h115 c-0.5 0 -1 0.8 -1 1 s0.5 1 1 1 H10 c-0.5 0 -1 -1 -1 -1 s0.5 -1 1 -1 z" opacity="0.65"/>
+          <path d="M330 9.5 h-115 c0.5 0 1 0.8 1 1 s-0.5 1 -1 1 h115 c0.5 0 1 -1 1 -1 s-0.5 -1 -1 -1 z" opacity="0.65"/>
+          <path d="M170 3 L175 10 L170 17 L165 10 Z" fill="#c9a961"/>
+          <circle cx="158" cy="10" r="1.8" fill="#c9a961"/>
+          <circle cx="182" cy="10" r="1.8" fill="#c9a961"/>
+          <path d="M148 10 Q140 3 132 10 Q140 17 148 10 Z" fill="none" stroke="#c9a961" stroke-width="1.1"/>
+          <path d="M192 10 Q200 3 208 10 Q200 17 192 10 Z" fill="none" stroke="#c9a961" stroke-width="1.1"/>
+          <path d="M140 10 C137 6 133 6 130 10 C133 14 137 14 140 10 Z" fill="#c9a961" opacity="0.75"/>
+          <path d="M200 10 C203 6 207 6 210 10 C207 14 203 14 200 10 Z" fill="#c9a961" opacity="0.75"/>
+          <circle cx="125" cy="10" r="1.2" fill="#c9a961"/>
+          <circle cx="215" cy="10" r="1.2" fill="#c9a961"/>
+        </svg>
+      </div>
+      <div class="footer-slogan">
+        SABOR AL CARBÓN<br>
+        QUE <span class="conquista-word">CONQUISTA</span> <span class="fire-emoji">🔥</span>
+      </div>
+      <div class="flourish-wrap flourish-bottom">
+        <svg class="gold-flourish" viewBox="0 0 340 20" fill="#c9a961">
+          <path d="M10 9.5 h115 c-0.5 0 -1 0.8 -1 1 s0.5 1 1 1 H10 c-0.5 0 -1 -1 -1 -1 s0.5 -1 1 -1 z" opacity="0.65"/>
+          <path d="M330 9.5 h-115 c0.5 0 1 0.8 1 1 s-0.5 1 -1 1 h115 c0.5 0 1 -1 1 -1 s-0.5 -1 -1 -1 z" opacity="0.65"/>
+          <path d="M170 3 L175 10 L170 17 L165 10 Z" fill="#c9a961"/>
+          <circle cx="158" cy="10" r="1.8" fill="#c9a961"/>
+          <circle cx="182" cy="10" r="1.8" fill="#c9a961"/>
+          <path d="M148 10 Q140 3 132 10 Q140 17 148 10 Z" fill="none" stroke="#c9a961" stroke-width="1.1"/>
+          <path d="M192 10 Q200 3 208 10 Q200 17 192 10 Z" fill="none" stroke="#c9a961" stroke-width="1.1"/>
+          <path d="M140 10 C137 6 133 6 130 10 C133 14 137 14 140 10 Z" fill="#c9a961" opacity="0.75"/>
+          <path d="M200 10 C203 6 207 6 210 10 C207 14 203 14 200 10 Z" fill="#c9a961" opacity="0.75"/>
+          <circle cx="125" cy="10" r="1.2" fill="#c9a961"/>
+          <circle cx="215" cy="10" r="1.2" fill="#c9a961"/>
+        </svg>
+      </div>
     </div>
-    <div class="footer-contact">📱 +57 324 613 3329</div>
-    <div class="footer-handle">@lamezasteakhouse</div>
-    <div class="socials">
-      <a href="https://wa.me/573246133329" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.87 11.87L4 20l4.24-1.11a7.9 7.9 0 0 0 3.8.97h0a7.94 7.94 0 0 0 5.56-13.54zm-5.55 12.2a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 5.6 3.09zm3.6-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.77-.11.13-.23.14-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.08-.4.09-.1.2-.24.29-.36.1-.12.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.34.05-.52.24-.18.2-.68.66-.68 1.62s.7 1.88.8 2.01c.1.13 1.38 2.1 3.34 2.95.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
-      </a>
-      <a href="https://instagram.com/lamezasteakhouse" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-      </a>
-      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.5-3.5h-3V7.8c0-1 .3-1.7 1.7-1.7H16.5V3.1C16 3 15 3 14 3c-2.7 0-4.5 1.6-4.5 4.6v2.4H7v3.5h2.5V21h4z"/></svg>
-      </a>
+
+    <div class="footer-bottom">
+      <div class="footer-phone">
+        📱 <a href="https://wa.me/573246133329" target="_blank" rel="noopener">+57 324 613 3329</a>
+      </div>
+      <div class="footer-handle">
+        @lamezasteakhouse
+      </div>
+      <div class="socials">
+        <a href="https://wa.me/573246133329" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.87 11.87L4 20l4.24-1.11a7.9 7.9 0 0 0 3.8.97h0a7.94 7.94 0 0 0 5.56-13.54zm-5.55 12.2a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 5.6 3.09zm3.6-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.77-.11.13-.23.14-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.08-.4.09-.1.2-.24.29-.36.1-.12.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.34.05-.52.24-.18.2-.68.66-.68 1.62s.7 1.88.8 2.01c.1.13 1.38 2.1 3.34 2.95.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+        </a>
+        <a href="https://instagram.com/lamezasteakhouse" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.5-3.5h-3V7.8c0-1 .3-1.7 1.7-1.7H16.5V3.1C16 3 15 3 14 3c-2.7 0-4.5 1.6-4.5 4.6v2.4H7v3.5h2.5V21h4z"/></svg>
+        </a>
+      </div>
     </div>
   </footer>
 
