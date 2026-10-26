@@ -715,5 +715,24 @@
     });
   });
 </script>
+  <!-- Carrito flotante -->
+<div id="carrito-flotante" style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 999;">
+  🛒 Carrito (<span id="contador-carrito">0</span>)
+</div>
+
+<script>
+  let carrito = [];
+  function agregar(nombre, precio) {
+    carrito.push({nombre, precio});
+    document.getElementById('contador-carrito').innerText = carrito.length;
+  }
+  document.getElementById('carrito-flotante').addEventListener('click', function() {
+    if(carrito.length === 0) { alert("Tu carrito está vacío"); return; }
+    let texto = "Hola, quiero pedir:%0A"; let total = 0;
+    carrito.forEach(item => { texto += `- ${item.nombre} ($${item.precio})%0A`; total += item.precio; });
+    texto += `%0ATotal: $${total}`;
+    window.open(`https://wa.me/573246133329?text=${texto}`, '_blank');
+  });
+</script>
 </body>
 </html>
